@@ -49,6 +49,24 @@
   # };
 in {
   config.vim = {
+    lazy.plugins.vimtex = {
+      enabled = true;
+      package = pkgs.vimPlugins.vimtex;
+      lazy = true;
+      ft = "tex";
+      setupOpts = {
+        init = ''
+          vim.g.vimtex_view_method = "general"
+          vim.g.vimtex_view_general_viewer = "zathura"
+          vim.g.vimtex_compiler_method = "latexrun"
+        '';
+      };
+      # Added this
+      after = ''
+        vim.api.nvim_command('unlet b:did_ftplugin')
+        vim.api.nvim_command('call vimtex#init()')
+      '';
+    };
     extraPlugins = with pkgs.vimPlugins; {
       telescope-file-browser = {
         package = telescope-file-browser-nvim;
@@ -60,29 +78,6 @@ in {
           require('tmux-status').setup {opts = {}}
         '';
       };
-
-      # nordic-nvim = {
-      #   package = nordic-nvim;
-      #   setup =
-      #     /*
-      #     lua
-      #     */
-      #     ''
-      #       require('nordic').setup({
-      #         cursorline = {
-      #           -- Available styles: 'dark', 'light'.
-      #           theme = 'dark',
-      #         },
-      #         -- on_palette = function(palette)
-      #            -- palette.black0 = "#14171D"  -- new, darkest tone
-      #            -- palette.black1 = "#191D24"  -- was black0
-      #            -- palette.black2 = "#1E222A"  -- was black1
-      #            -- palette.gray0  = "#222630"  -- was black2
-      #         -- end,
-      #       })
-      #       vim.cmd.colorscheme('nordic')
-      #     '';
-      # };
 
       mellow-nvim = {
         package = mellow-nvim;
@@ -124,20 +119,6 @@ in {
         package = nvim-colorizer-lua;
         setup = "require('colorizer').setup {}";
       };
-
-      # hardtime-nvim = {
-      #   package = hardtime-nvim;
-      #   setup = ''
-      #     require('hardtime').setup({
-      #       disabled_keys = {
-      #         ["<Up>"] = {},
-      #         ["<Down>"] = {},
-      #         ["<Left>"] = {},
-      #         ["<Right>"] = {},
-      #       },
-      #     })
-      #   '';
-      # };
 
       nui-nvim = {
         package = nui-nvim;
