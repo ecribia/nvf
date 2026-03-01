@@ -8,7 +8,7 @@
 
     minimap = {
       minimap-vim.enable = false;
-      codewindow.enable = true; # lighter, faster, and uses lua for configuration
+      # codewindow.enable = true; # lighter, faster, and uses lua for configuration (CAUSES ERROR IN FEB 2026)
     };
 
     utility = {
@@ -21,7 +21,7 @@
     };
 
     vimAlias = false;
-    useSystemClipboard = true;
+    # useSystemClipboard = true;
     undoFile.enable = true;
 
     options = {

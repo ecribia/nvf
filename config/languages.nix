@@ -29,10 +29,11 @@
       nix = {
         enable = true;
         lsp = {
-          server = "nixd";
+          servers = ["nixd"];
         };
         format = {
           enable = true;
+          type = ["alejandra"];
         };
         treesitter.enable = true;
       };

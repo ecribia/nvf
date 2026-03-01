@@ -1,5 +1,8 @@
 {
   config.vim = {
-    lsp.enable = true;
+    lsp = {
+      enable = true;
+      formatOnSave = true;
+    };
   };
 }
