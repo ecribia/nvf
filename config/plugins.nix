@@ -9,16 +9,6 @@
     };
   };
 
-  nordic-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "nordic-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "AlexvZyl";
-      repo = "nordic.nvim";
-      rev = "6afe957722fb1b0ec7ca5fbea5a651bcca55f3e1";
-      hash = "sha256-NY4kjeq01sMTg1PZeVVa2Vle4KpLwWEv4y34cDQ6JMU=";
-    };
-  };
-
   mellow-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "mellow.nvim";
     src = pkgs.fetchFromGitHub {
@@ -29,15 +19,27 @@
     };
   };
 
-  golf = pkgs.vimUtils.buildVimPlugin {
-    name = "golf";
+  mdnotes = pkgs.vimUtils.buildVimPlugin {
+    name = "mdnotes";
     src = pkgs.fetchFromGitHub {
-      owner = "vuciv";
-      repo = "golf";
-      rev = "abf1bc0c1c4a5482b4a4b36b950b49aaa0f39e69";
-      hash = "sha256-lCzt+7/uZ/vvWnvWPIqjtS3G3w3qOhI7vHdSQ9bvMKU=";
+      owner = "ymic9963";
+      repo = "mdnotes.nvim";
+      rev = "5adf2a2c204a74a9e9dbc8f92b604501387822ad";
+      hash = "sha256-GhJgbf4yVyPfduwnFyNnZCrgApXOxfNAqZ1mpudZvZ4=";
     };
+    preFixup = ''
+      rm -rf $out/doc
+    '';
   };
+  # lonelog-nvim = pkgs.vimUtils.buildVimPlugin {
+  #   name = "lonelog.nvim";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "Django0033";
+  #     repo = "lonelog.nvim";
+  #     rev = "f494211aa6e53a0713765a126315411232ef787f";
+  #     hash = "sha256-n3cBdWuUPvUmLgJgvhFQHBZoZrqRqnJL+K9vay3rCSQ=";
+  #   };
+  # };
   # direnv-nvim = pkgs.vimUtils.buildVimPlugin {
   #   name = "direnv-nvim";
   #   src = pkgs.fetchFromGitHub {
@@ -75,7 +77,23 @@ in {
       tmux-status = {
         package = tmux-status;
         setup = ''
-          require('tmux-status').setup {opts = {}}
+          require('tmux-status').setup {}
+        '';
+      };
+
+      mdnotes = {
+        package = mdnotes;
+        setup = ''
+          require('mdnotes').setup {}
+        '';
+      };
+
+      live-preview-nvim = {
+        package = live-preview-nvim;
+        setup = ''
+          require('live-preview').setup {
+            dynamic_root = true,
+          }
         '';
       };
 
@@ -144,10 +162,6 @@ in {
       harpoon = {
         package = harpoon;
         setup = "require('harpoon').setup {}";
-      };
-
-      golf = {
-        package = golf;
       };
 
       vim-rooter = {
