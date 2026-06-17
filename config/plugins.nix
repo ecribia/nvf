@@ -88,12 +88,9 @@ in {
         '';
       };
 
-      live-preview-nvim = {
-        package = live-preview-nvim;
+      markdown-preview-nvim = {
+        package = markdown-preview-nvim;
         setup = ''
-          require('live-preview').setup {
-            dynamic_root = true,
-          }
         '';
       };
 
