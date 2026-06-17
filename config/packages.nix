@@ -3,6 +3,7 @@
     extraPackages = with pkgs; [
       ripgrep
       tmux
+      nodejs
     ];
   };
 }
