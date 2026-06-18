@@ -19,17 +19,14 @@
     };
   };
 
-  mdnotes = pkgs.vimUtils.buildVimPlugin {
-    name = "mdnotes";
+  telescope-heading = pkgs.vimUtils.buildVimPlugin {
+    name = "telescope-heading";
     src = pkgs.fetchFromGitHub {
-      owner = "ymic9963";
-      repo = "mdnotes.nvim";
-      rev = "5adf2a2c204a74a9e9dbc8f92b604501387822ad";
-      hash = "sha256-GhJgbf4yVyPfduwnFyNnZCrgApXOxfNAqZ1mpudZvZ4=";
+      owner = "crispgm";
+      repo = "telescope-heading.nvim";
+      rev = "fb60fb08ea37849f79af21c2265cb77dc9687a20";
+      hash = "sha256-30VuZQStjbkfygCqQR8TlSLoKKh2RydSXtqqTy505Mk=";
     };
-    preFixup = ''
-      rm -rf $out/doc
-    '';
   };
   # lonelog-nvim = pkgs.vimUtils.buildVimPlugin {
   #   name = "lonelog.nvim";
@@ -77,20 +74,21 @@ in {
       tmux-status = {
         package = tmux-status;
         setup = ''
-          require('tmux-status').setup {}
+          require('telescope').load_extension('heading')
         '';
       };
 
-      mdnotes = {
-        package = mdnotes;
+      telescope-heading = {
+        package = telescope-heading;
         setup = ''
-          require('mdnotes').setup {}
+          require('tmux-status').setup {}
         '';
       };
 
       markdown-preview-nvim = {
         package = markdown-preview-nvim;
         setup = ''
+          -- vim.g.mkdp_auto_start = 1
         '';
       };
 

@@ -28,6 +28,7 @@
       backup = false;
       # completeopt = ''{ "menuone", "noselect" }'';
       conceallevel = 0;
+      foldenable = false;
       fileencoding = "utf-8";
       hidden = true;
       ignorecase = true;
