@@ -157,6 +157,27 @@
             end, { buffer = args.buf, silent = true, desc = "Fold heading or fallback Tab" })
           end,
         })
+
+        -- Daily Notes for Markdown Oxide
+        vim.api.nvim_create_autocmd('LspAttach', {
+          callback = function(args)
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+            if client and client.name == "markdown-oxide" then
+              vim.api.nvim_create_user_command(
+                "Daily",
+                function(cmd_args)
+                  local input = cmd_args.args
+                  local arguments = (input ~= "" ) and { input } or {}
+                  client:exec_cmd({
+                    command = "jump",
+                    arguments = arguments,
+                  })
+                end,
+                { desc = "Open daily note", nargs = "*" }
+              )
+            end
+          end,
+        })
       '';
   };
 }
