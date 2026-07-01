@@ -14,9 +14,9 @@
       #     require("autolist").setup()
       #   '';
       # };
-      markview = {
-        package = markview-nvim;
-      };
+      # markview = {
+      #   package = markview-nvim;
+      # };
     };
 
     languages = {
@@ -45,6 +45,31 @@
       css = {
         enable = true;
         treesitter.enable = true;
+      };
+      markdown = {
+        enable = true;
+        lsp.servers = [
+          "markdown-oxide"
+        ];
+        extensions.markview-nvim = {
+          enable = true;
+          setupOpts = {
+            # markdown.headings = {
+            #   heading_1 = {
+            #     icon_hl = "@markup.link";
+            #     icon = "[%d] ";
+            #   };
+            #   heading_2 = {
+            #     icon_hl = "@markup.link";
+            #     icon = "[%d.%d] ";
+            #   };
+            #   heading_3 = {
+            #     icon_hl = "@markup.link";
+            #     icon = "[%d.%d.%d] ";
+            #   };
+            # };
+          };
+        };
       };
     };
   };

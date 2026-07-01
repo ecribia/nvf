@@ -94,13 +94,13 @@ in {
 
       mellow-nvim = {
         package = mellow-nvim;
-        setup =
-          /*
-          lua
-          */
-          ''
-            vim.cmd.colorscheme('mellow')
-          '';
+        # setup =
+        #   /*
+        #   lua
+        #   */
+        #   ''
+        #     vim.cmd.colorscheme('mellow')
+        #   '';
       };
 
       neogit = {

@@ -1,12 +1,12 @@
 {
   config.vim = {
     dashboard.dashboard-nvim.enable = true;
-    # theme = {
-    #   enable = true;
-    #   name = "rose-pine";
-    #   style = "moon";
-    #   transparent = false;
-    # };
+    theme = {
+      enable = true;
+      name = "catppuccin";
+      style = "mocha";
+      transparent = false;
+    };
 
     # theme = {
     #   enable = true;
